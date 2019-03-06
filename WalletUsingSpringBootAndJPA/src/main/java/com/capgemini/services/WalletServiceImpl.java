@@ -32,7 +32,6 @@ public class WalletServiceImpl implements WalletService{
 			throw new MobileNumberAlreadyExist();
 		}*/
 		try {
-			
 			walletRepo.findById(mobileno).get();
 			System.out.println("error");
 		}

@@ -3,9 +3,14 @@ package com.capgemini.beans;
 import java.math.BigDecimal;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 @Embeddable
 public class Wallet {
+	
+	@PositiveOrZero
+	@NotNull
 	private BigDecimal balance;
 	
 	

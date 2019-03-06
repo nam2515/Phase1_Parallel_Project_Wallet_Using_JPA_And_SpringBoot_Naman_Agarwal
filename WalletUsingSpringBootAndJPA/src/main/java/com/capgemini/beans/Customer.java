@@ -4,14 +4,25 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name="Customer")
 public class Customer {
+	
+	@NotEmpty(message="Can't be null")
+	@Pattern(regexp="[a-z,A-z ]+")
 	private String name;
+	
 	@Id
+	@NonNull
+	@Pattern(regexp="[0-9]{10}")
 	private String mobileno;
+	
 	@Embedded
+	@NonNull
 	private Wallet wallet;
 	
 	
