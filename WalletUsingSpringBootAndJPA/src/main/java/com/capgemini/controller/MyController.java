@@ -32,19 +32,19 @@ public class MyController {
 		return walletServiceImpl.createAccount(name, mobileno, balance);
 	}
 	
-	@RequestMapping(path="/depositMoney/{mobileno}/{amount}")
+	@RequestMapping(path="/depositMoney/{mobileno}/{amount}", method=RequestMethod.POST)
 	public Customer depositMoney(@PathVariable String mobileno, @PathVariable BigDecimal amount) throws MobileNumbeDoesNotExist
 	{
 		return walletServiceImpl.depositAmount(mobileno, amount);
 	}
 	
-	@RequestMapping(path="/withdrawMoney/{mobileno}/{amount}")
+	@RequestMapping(path="/withdrawMoney/{mobileno}/{amount}", method=RequestMethod.POST)
 	public Customer withdrawMoney(@PathVariable String mobileno, @PathVariable BigDecimal amount) throws InsufficientBalance, MobileNumbeDoesNotExist
 	{
 		return walletServiceImpl.withdrawAmount(mobileno, amount);
 	}
 	
-	@RequestMapping(path="/fundTransfer/{sourcemobileno}/{destinationmobileno}/{amount}")
+	@RequestMapping(path="/fundTransfer/{sourcemobileno}/{destinationmobileno}/{amount}", method=RequestMethod.POST)
 	public List<Customer> fundTransfer(@PathVariable String sourcemobileno, @PathVariable String destinationmobileno, @PathVariable BigDecimal amount ) throws InsufficientBalance, MobileNumbeDoesNotExist
 	{
 		return walletServiceImpl.fundTransfer(sourcemobileno, destinationmobileno, amount);

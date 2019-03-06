@@ -14,6 +14,16 @@ public class Customer {
 	@Embedded
 	private Wallet wallet;
 	
+	
+	public Customer() {
+		super();
+	}
+	public Customer(String name, String mobileno, Wallet wallet) {
+		super();
+		this.name = name;
+		this.mobileno = mobileno;
+		this.wallet = wallet;
+	}
 	public String getName() {
 		return name;
 	}

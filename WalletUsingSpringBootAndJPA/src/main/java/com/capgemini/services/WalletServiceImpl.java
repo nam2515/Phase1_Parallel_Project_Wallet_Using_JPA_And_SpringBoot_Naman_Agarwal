@@ -27,16 +27,28 @@ public class WalletServiceImpl implements WalletService{
 	@Override
 	public Customer createAccount(String name, String mobileno, BigDecimal balance) throws MobileNumbeDoesNotExist, MobileNumberAlreadyExist {
 		// TODO Auto-generated method stub
-		if(showBalance(mobileno)!=null)
+		/*if(walletRepo.existsById(mobileno))
+		{
 			throw new MobileNumberAlreadyExist();
-		Customer customer= new Customer();
-		Wallet wallet=new Wallet();
-		wallet.setBalance(balance);
-		customer.setName(name);
-		customer.setMobileno(mobileno);
-		customer.setWallet(wallet);
-		walletRepo.save(customer);
-		return customer;
+		}*/
+		try {
+			
+			walletRepo.findById(mobileno).get();
+			System.out.println("error");
+		}
+		catch(Exception e)
+		{
+			Customer customer= new Customer();
+			Wallet wallet=new Wallet();
+			wallet.setBalance(balance);
+			customer.setName(name);
+			customer.setMobileno(mobileno);
+			customer.setWallet(wallet);
+			walletRepo.save(customer);
+			return customer;
+		}
+		return null;
+	
 	}
 
 	@Override
